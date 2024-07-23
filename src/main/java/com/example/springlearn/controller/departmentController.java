@@ -1,6 +1,7 @@
 package com.example.springlearn.controller;
 
 import com.example.springlearn.entity.Department;
+import com.example.springlearn.repository.DepartmentRepository;
 import com.example.springlearn.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +13,15 @@ public class departmentController {
 
     @Autowired
    private DepartmentService departmentService;
+    private DepartmentRepository departmentRepository;
 
     @PostMapping("/departments")
     public Department saveDepartment(@RequestBody Department department){
         return departmentService.saveDepartment(department);
 
     }
+
+
     @GetMapping("/getDepartments")
     public List<Department> fetchAllDepartment(){
         return departmentService.fetchAllDepartment();
